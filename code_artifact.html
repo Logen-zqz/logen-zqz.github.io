@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 - Personal Homepage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 全局字体设置 */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* 统一背景图设置（使用第一张图片） */
+        .bg-custom-image {
+            background-image: url('1000026979.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* 毛玻璃效果强化 */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 悬浮微动画 */
+        .hover-up {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .hover-up:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-custom-image text-slate-100 min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-white">
+
+    <!-- 遮罩层：防止背景图过于耀眼影响文字阅读 -->
+    <div class="fixed inset-0 bg-black/30 pointer-events-none z-0"></div>
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 glass-nav px-6 py-4 transition-all">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- 标识 / Logo -->
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wider">
+                    PORTFOLIO
+                </span>
+            </div>
+
+            <!-- 导航链接 -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">关于我</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">项目展示</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">技能栈</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">联系方式</a>
+            </nav>
+
+            <!-- 右侧快捷按钮 -->
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-cyan-500/20">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容区域 -->
+    <main class="relative z-10 flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10 space-y-12">
+
+        <!-- 个人 Hero 信息卡片 (使用了第二张图片作为头像) -->
+        <section id="about" class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <!-- 头像区域（第二张图：1000026957.jpg） -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                    <img 
+                        src="1000026957.jpg" 
+                        alt="Avatar" 
+                        class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-2 border-white/20 shadow-xl bg-white"
+                        onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Avatar'"
+                    >
+                    <!-- 在线状态点 -->
+                    <span class="absolute bottom-2 right-2 w-5 h-5 bg-emerald-500 border-2 border-slate-900 rounded-full" title="Online"></span>
+                </div>
+
+                <!-- 个人文案描述 -->
+                <div class="flex-1 text-center md:text-left space-y-4">
+                    <div class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide uppercase">
+                        欢迎来到我的个人空间
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                        你好，我是
+                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">[九百的凛]</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        这里是我的个人主页。我突发奇想做的，大部分都是AI写好我懒得改了
+                    </p>
+
+                    <!-- 社交媒体链接按钮 -->
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3 pt-2">
+                        <a href="https://github.com/Logen-zqz?tab=repositories" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-400 transition-all hover-up" title="GitHub">
+                            <i class="fab font-bold fa-github text-xl"></i>
+                        </a>
+                        <a href="https://space.bilibili.com/639691242?spm_id_from=333.1007.0.0" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-400 transition-all hover-up" title="Bilibili">
+                            <i class="fab font-bold fa-bilibili text-xl"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-400 transition-all hover-up" title="QQ / 微信">
+                            <i class="fab font-bold fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-300 hover:text-cyan-400 transition-all hover-up" title="Email">
+                            <i class="fas font-bold fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目 / 作品卡片展区 -->
+        <section id="projects" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fas fa-cubes text-cyan-400"></i> 项目展示
+                </h2>
+                <span class="text-xs text-slate-400">点击项目可查看详情</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 卡片 1 -->
+                <div class="glass-card rounded-2xl p-5 hover-up border border-white/10 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-full h-40 rounded-xl bg-slate-800/80 overflow-hidden relative border border-white/5">
+                            <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+1" alt="Project 1" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-white">项目名称 01</h3>
+                        <p class="text-sm text-slate-300 line-clamp-2">
+                            这里写项目的简短描述，说明项目的主要功能和使用的技术栈。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/5 text-xs">
+                        <span class="text-cyan-400 font-mono">#React #Tailwind</span>
+                        <a href="#" class="text-slate-300 hover:text-white flex items-center gap-1">
+                            查看 <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 卡片 2 -->
+                <div class="glass-card rounded-2xl p-5 hover-up border border-white/10 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-full h-40 rounded-xl bg-slate-800/80 overflow-hidden relative border border-white/5">
+                            <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+2" alt="Project 2" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-white">项目名称 02</h3>
+                        <p class="text-sm text-slate-300 line-clamp-2">
+                            这里写项目的简短描述，说明项目的主要功能和使用的技术栈。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/5 text-xs">
+                        <span class="text-cyan-400 font-mono">#Vue #Python</span>
+                        <a href="#" class="text-slate-300 hover:text-white flex items-center gap-1">
+                            查看 <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 卡片 3 -->
+                <div class="glass-card rounded-2xl p-5 hover-up border border-white/10 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-full h-40 rounded-xl bg-slate-800/80 overflow-hidden relative border border-white/5">
+                            <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+3" alt="Project 3" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-white">项目名称 03</h3>
+                        <p class="text-sm text-slate-300 line-clamp-2">
+                            这里写项目的简短描述，说明项目的主要功能和使用的技术栈。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/5 text-xs">
+                        <span class="text-cyan-400 font-mono">#Design #UI/UX</span>
+                        <a href="#" class="text-slate-300 hover:text-white flex items-center gap-1">
+                            查看 <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能栈与经历框架 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills">
+            <!-- 技能栈 -->
+            <section class="glass-card rounded-3xl p-6 shadow-xl space-y-4">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fas fa-code text-cyan-400"></i> 技能与特长
+                </h2>
+                <div class="space-y-3 text-sm">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-slate-200">前端开发 (HTML/CSS/JS)</span>
+                            <span class="text-cyan-400">1%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 1%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-slate-200">UI / 设计灵感</span>
+                            <span class="text-cyan-400">1%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 1%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-slate-200">游戏 / 动漫爱好</span>
+                            <span class="text-cyan-400">1%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 1%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 动态 / 便签留言区域 -->
+            <section id="contact" class="glass-card rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2 mb-3">
+                        <i class="fas fa-paper-plane text-cyan-400"></i> 快速联系
+                    </h2>
+                    <p class="text-sm text-slate-300 mb-4">
+                        如果你对我的作品感兴趣，或者想进行交流，随时给我留言或发送邮件。
+                    </p>
+                    <div class="space-y-2 text-sm text-slate-300">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-cyan-400 w-5"></i>
+                            <span>3345166099@qq.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-cyan-400 w-5"></i>
+                            <span>现居：城市 / 国家</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-white/10">
+                    <button onclick="copyEmail()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="far fa-copy"></i> 复制我的邮箱
+                    </button>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="relative z-10 glass-nav py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                © <span id="year"></span> Your Name. All rights reserved.
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-slate-200 transition-colors">隐私政策</a>
+                <a href="#" class="hover:text-slate-200 transition-colors">使用条款</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 简易 JS 逻辑 -->
+    <script>
+        // 自动更新年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 复制邮箱逻辑
+        function copyEmail() {
+            const email = "yourname@example.com";
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // 显示一个简易模态框/提示
+            const toast = document.createElement("div");
+            toast.className = "fixed bottom-8 right-8 z-50 bg-cyan-500 text-slate-950 px-4 py-3 rounded-xl font-bold shadow-2xl transition-all animate-bounce";
+            toast.textContent = "邮箱已成功复制到剪贴板！";
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
